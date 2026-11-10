@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Hamilton Quintero García — Systems Engineer & Software Architect</title>
+  <meta name="description" content="Ingeniería de software, infraestructura de red y ciberseguridad aplicada. Arquitecturas escalables, sistemas de inventario en producción y plataformas de alta concurrencia desde Manizales, Colombia." />
+  
+  <meta property="og:title" content="Hamilton Quintero García | Systems Engineer & Software Architect" />
+  <meta property="og:description" content="Arquitecturas resilientes, desarrollo backend/frontend, infraestructura Cisco y seguridad de la información. Proyectos en producción y casos de estudio verificables." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#07080c" />
+
+  <!-- Prevenir FOUC de tema -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('hq_theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2307080c'/><path d='M28 28 L46 50 L28 72 M52 72 L72 72' stroke='%2300f2fe' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Schema.org JSON-LD para SEO y perfil profesional -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hamilton Quintero García",
+    "jobTitle": "Systems Engineer & Software Architect",
+    "description": "Ingeniería de software, infraestructura de red y ciberseguridad aplicada. Construcción de arquitecturas escalables, sistemas de inventario y plataformas de alta concurrencia desde Manizales, Colombia.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Manizales",
+      "addressRegion": "Caldas",
+      "addressCountry": "CO"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Universidad de Manizales"
+    },
+    "knowsAbout": [
+      "Software Architecture",
+      "Cybersecurity",
+      "Full-Stack Development",
+      "Node.js",
+      "PHP 8.4",
+      "C# .NET",
+      "Cisco Networking",
+      "AI Automation",
+      "ISO 27000",
+      "High Concurrency & Web Performance"
+    ]
+  }
+  </script>
+</head>
+<body class="spatial-body">
+
+  <!-- ========================================================================
+       NEURAL NETWORK 3D LIVING BACKGROUND (ORGANIC SYNAPTIC WEB)
+       ======================================================================== -->
+  <canvas id="spatial-neural-canvas" class="spatial-neural-bg"></canvas>
+
+  <!-- ========================================================================
+       FLOATING SPATIAL HUD (TOP BAR)
+       ======================================================================== -->
+  <header class="spatial-hud" id="navbar">
+    <div class="hud-inner">
+      
+      <!-- Brand Host Tag -->
+      <a href="#inicio" class="hud-brand" aria-label="HQ Host">
+        <span class="hud-prompt">hq@sys:</span><span class="hud-path">~</span><span class="hud-cursor">_</span>
+      </a>
+
+      <!-- Telemetry Live Pulse -->
+      <div class="hud-telemetry">
+        <span class="telemetry-dot"></span>
+        <span class="telemetry-text"><strong class="t-city">MANIZALES, CO</strong> <span class="t-sep">/</span> <span class="t-time" id="live-clock">--:--:--</span></span>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="hud-nav" id="hud-nav">
+        <a href="#showroom" class="nav-link">Showroom 3D</a>
+        <a href="#soluciones" class="nav-link">Soluciones</a>
+        <a href="#monolitos" class="nav-link">23 Leyes</a>
+        <a href="#vault" class="nav-link">Bóveda (22)</a>
+        <a href="#cotizador" class="nav-link">Cotizador</a>
+        
+        <button class="hud-cmdk-btn" id="open-cmdk-btn" title="Abrir paleta de comandos (⌘K / Ctrl+K)">
+          <span class="cmdk-key">⌘</span><kbd>K</kbd>
+        </button>
+      </nav>
+
+      <!-- HUD Right Actions -->
+      <div class="hud-actions">
+        <button class="theme-btn" id="theme-toggle" aria-label="Alternar tema">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+
+        <a href="https://wa.me/573146384647?text=Hola%20Hamilton%2C%20estuve%20revisando%20tu%20sitio%20web%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener" class="hud-contact-btn">
+          <span>Contacto</span> &rarr;
+        </a>
+
+        <button class="hud-burger" id="hud-burger" aria-label="Menú móvil">
+          <span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================================
+         STAGE 1: HERO SPATIAL 3D (THE CORE)
+         ======================================================================== -->
+    <section class="spatial-hero" id="inicio">
+      <div class="spatial-container hero-content-wrap">
+        
+        <!-- Live Status Pill -->
+        <div class="spatial-status-badge">
+          <span class="status-pulse-dot"></span>
+          <span>DISPONIBLE PARA DESARROLLO, HARDENING &amp; CONSULTORÍA</span>
+        </div>
+
+        <!-- Big Headline -->
+        <h1 class="spatial-hero-title">
+          Arquitecturas digitales <br />
+          <span class="spatial-gradient-text">donde el software y la red convergen.</span>
+        </h1>
+
+        <!-- Pitch -->
+        <p class="spatial-hero-lead">
+          Soy <strong>Hamilton Quintero García</strong>. Desarrollo sistemas empresariales en producción, plataformas de alta concurrencia y conectividad perimetral blindada. Quien diseña la lógica de negocio es el mismo que optimiza la base de datos, enruta el switch Cisco y audita la seguridad.
+        </p>
+
+        <!-- Primary Action Group -->
+        <div class="hero-actions-row">
+          <a href="https://wa.me/573146384647?text=Hola%20Hamilton%2C%20quiero%20cotizar%20un%20desarrollo%20o%20consultor%C3%ADa" target="_blank" rel="noopener" class="spatial-btn primary">
+            <span class="btn-dot-live"></span>
+            <span>Iniciar Conversación</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <a href="#showroom" class="spatial-btn glass">
+            <span>Explorar Proyectos 3D</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+
+          <button class="spatial-btn secondary" id="open-cv-modal-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            <span>Descargar Hoja de Vida</span>
+          </button>
+        </div>
+
+        <!-- ====================================================================
+             INTERACTIVE 3D SPATIAL HOLOGRAM POD (Desarrollo, Ciberseguridad, Redes & IA)
+             ==================================================================== -->
+        <div class="hero-holo-viewer" data-tilt>
+          <div class="card-ambient-glow"></div>
+          
+          <div class="holo-header-bar">
+            <div class="holo-tag-live">
+              <span class="telemetry-dot"></span>
+              <span>MODELO HOLOGRÁFICO 3D EN VIVO &middot; ARRASTRA PARA ROTAR EN 360°</span>
+            </div>
+
+            <!-- 3D Model Switcher Tabs -->
+            <div class="holo-tabs" id="holo-model-tabs">
+              <button class="holo-tab active" data-model="dev" title="Ver Cubo de Código / Tesseract">
+                <span class="h-icon">💻</span>
+                <span>Desarrollo</span>
+              </button>
+              <button class="holo-tab" data-model="sec" title="Ver Escudo Criptográfico 3D">
+                <span class="h-icon">🛡️</span>
+                <span>Ciberseguridad</span>
+              </button>
+              <button class="holo-tab" data-model="net" title="Ver Topología Cisco 3D &amp; Paquetes">
+                <span class="h-icon">🖧</span>
+                <span>Redes Cisco</span>
+              </button>
+              <button class="holo-tab" data-model="ai" title="Ver Red Sináptica IA 3D">
+                <span class="h-icon">⚡</span>
+                <span>IA Aplicada</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="holo-viewport-wrap">
+            <canvas id="holo-core-canvas" class="holo-core-canvas" width="720" height="360"></canvas>
+            
+            <div class="holo-telemetry-overlay">
+              <div class="holo-badge-hud" id="holo-model-name">
+                <span class="hud-status-led"></span>
+                <strong>Cubo de Código &middot; Tesseract 4D</strong>
+              </div>
+              <div class="holo-stats-row">
+                <span id="holo-stat-desc">Lógica de Software &middot; 32 Aristas &middot; Glifos Orbitantes</span>
+                <span class="holo-interact-tip">🖱️ Arrastra con el cursor / toque para rotar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric KPI Strip (Desaturated, Breathable) -->
+        <div class="hero-kpi-deck">
+          <div class="kpi-slab">
+            <strong class="kpi-number">6+</strong>
+            <span class="kpi-label">Sistemas en Producción</span>
+            <small class="kpi-sub">Gobernación &amp; Empresas</small>
+          </div>
+
+          <div class="kpi-slab">
+            <strong class="kpi-number">2.551</strong>
+            <span class="kpi-label">Mesas E-14 Electorales</span>
+            <small class="kpi-sub">Concurrencia masiva k6</small>
+          </div>
+
+          <div class="kpi-slab">
+            <strong class="kpi-number">Grado A</strong>
+            <span class="kpi-label">SecurityHeaders &amp; DMARC</span>
+            <small class="kpi-sub">90/100 MinTIC ITA</small>
+          </div>
+
+          <div class="kpi-slab">
+            <strong class="kpi-number">100%</strong>
+            <span class="kpi-label">Trazabilidad Maquinaria</span>
+            <small class="kpi-sub">InvenTrack v2.0 Kardex</small>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         STAGE 2: SHOWROOM 3D DE PROYECTOS INSIGNIA (CURATED 3D DECK)
+         ======================================================================== -->
+    <section class="spatial-section" id="showroom">
+      <div class="spatial-container">
+        
+        <div class="spatial-header-center">
+          <span class="spatial-tag">[ SHOWROOM DE ARQUITECTURA ]</span>
+          <h2 class="spatial-title">Sistemas insignia <span class="spatial-gradient-text">probados en producción real</span></h2>
+          <p class="spatial-subtitle">
+            Cuatro plataformas desarrolladas con ingeniería de precisión. Cada tarjeta responde con perspectiva tridimensional interactiva y muestra la resolución de cuellos de botella operativos.
+          </p>
+        </div>
+
+        <!-- 3D Deck Grid: 4 Flagship Projects with True 3D Depth -->
+        <div class="showroom-deck-grid">
+          
+          <!-- SHOWROOM CARD 1: InvenTrack v2.0 -->
+          <div class="spatial-card" data-tilt>
+            <div class="card-ambient-glow"></div>
+            <div class="spatial-card-inner">
+              <div class="card-header-bar spatial-layer">
+                <span class="badge-live-prod">● EN PRODUCCIÓN</span>
+                <span class="card-sys-id">INV-2.0.0</span>
+              </div>
+
+              <div class="card-body-block spatial-layer">
+                <h3>InvenTrack v2.0 &amp; Setup Desktop</h3>
+                <p class="card-lead-desc">
+                  Control integral de repuestos, lubricantes y consumibles para la flota pesada y maquinaria de la Gobernación de Caldas. Sustituyó planillas físicas con salidas por carrito, Kardex en tiempo real, log inmutable y bot de Telegram para reposición crítica.
+                </p>
+              </div>
+
+              <!-- Interactive Floating Preview Layer -->
+              <div class="card-mockup-spatial spatial-layer">
+                <div class="mockup-header-mini">
+                  <div class="m-dots"><span></span><span></span><span></span></div>
+                  <span class="m-path">inventrack.promuevemas.internal/kardex</span>
+                </div>
+                <div class="mockup-content-mini">
+                  <div class="m-stat-row">
+                    <div><span>Stock Global:</span> <strong>1.428 ítems</strong></div>
+                    <div><span>Despachos Hoy:</span> <strong>14 salidas</strong></div>
+                    <div><span>Alertas Telegram:</span> <strong style="color:var(--neon-green)">Activas</strong></div>
+                  </div>
+                  <div class="m-toast-mini">
+                    <span>✈ Bot Telegram:</span> Alerta automática emitida por stock mínimo de filtros CAT.
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-footer-meta spatial-layer">
+                <div class="tech-pills-row">
+                  <span>Node.js</span><span>Express</span><span>SQLite/MySQL</span><span>Electron</span><span>Telegram Bot</span>
+                </div>
+                <button class="inspect-trigger-btn" data-detail="inventrack">Inspeccionar Ficha &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOWROOM CARD 2: Sistema E-14 Mesas en Vivo -->
+          <div class="spatial-card" data-tilt>
+            <div class="card-ambient-glow"></div>
+            <div class="spatial-card-inner">
+              <div class="card-header-bar spatial-layer">
+                <span class="badge-pilot-tested">● PILOTO VALIDADO</span>
+                <span class="card-sys-id">E14-PWA-CORE</span>
+              </div>
+
+              <div class="card-body-block spatial-layer">
+                <h3>Sistema Electoral E-14 (Mesas en Vivo)</h3>
+                <p class="card-lead-desc">
+                  Plataforma PWA *offline-first* diseñada para resolver el cuello de botella masivo de transmisión electoral: ~3.000 testigos subiendo ~6.000 actas en menos de 16 minutos en 27 municipios, con compresión Canvas local de 8MB a ~380KB.
+                </p>
+              </div>
+
+              <!-- Interactive Floating Preview Layer -->
+              <div class="card-mockup-spatial spatial-layer">
+                <div class="mockup-header-mini">
+                  <div class="m-dots"><span></span><span></span><span></span></div>
+                  <span class="m-path">e14.live/monitor/concurrencia</span>
+                </div>
+                <div class="mockup-content-mini">
+                  <div class="m-stat-row">
+                    <div><span>Mesas Objetivo:</span> <strong>2.551 Mesas</strong></div>
+                    <div><span>Ventana Crítica:</span> <strong>&lt; 16 minutos</strong></div>
+                    <div><span>Compresión:</span> <strong style="color:var(--neon-cyan)">-95% en Cliente</strong></div>
+                  </div>
+                  <div class="m-toast-mini">
+                    <span>⚡ k6 Stress Test:</span> Latencia sostenida menor a 0.4s por acta con WebSockets.
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-footer-meta spatial-layer">
+                <div class="tech-pills-row">
+                  <span>Node.js 20</span><span>Express 5</span><span>Socket.IO</span><span>Canvas API</span><span>k6</span>
+                </div>
+                <button class="inspect-trigger-btn" data-detail="e14">Inspeccionar Ficha &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOWROOM CARD 3: Ahumados Bárbaros PWA -->
+          <div class="spatial-card" data-tilt>
+            <div class="card-ambient-glow"></div>
+            <div class="spatial-card-inner">
+              <div class="card-header-bar spatial-layer">
+                <span class="badge-live-prod">● PRODUCCIÓN ACTIVA</span>
+                <span class="card-sys-id">PWA-BARBAROS</span>
+              </div>
+
+              <div class="card-body-block spatial-layer">
+                <h3>Ahumados Bárbaros (PWA Gastronómica)</h3>
+                <p class="card-lead-desc">
+                  Plataforma comercial offline-first en <a href="https://ahumadosbarbaros.com" target="_blank" rel="noopener" style="color:var(--neon-cyan)">ahumadosbarbaros.com</a>. Carta digital interactiva con tiempo de carga inferior a 300 ms, SEO Schema.org y enrutamiento automatizado a WhatsApp para 2 sedes sin comisiones a terceros.
+                </p>
+              </div>
+
+              <!-- Interactive Floating Preview Layer -->
+              <div class="card-mockup-spatial spatial-layer">
+                <div class="mockup-header-mini">
+                  <div class="m-dots"><span></span><span></span><span></span></div>
+                  <span class="m-path">ahumadosbarbaros.com/carta-digital</span>
+                </div>
+                <div class="mockup-content-mini">
+                  <div class="m-stat-row">
+                    <div><span>Sedes Activas:</span> <strong>2 (Chipre &amp; Francia)</strong></div>
+                    <div><span>Tiempo Carga:</span> <strong>&lt; 280ms</strong></div>
+                    <div><span>Comisiones Apps:</span> <strong style="color:var(--neon-green)">0% Directo</strong></div>
+                  </div>
+                  <div class="m-toast-mini">
+                    <span>🍖 WhatsApp Dispatcher:</span> Pedido consolidado y enrutado a cocina en 1 clic.
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-footer-meta spatial-layer">
+                <div class="tech-pills-row">
+                  <span>HTML5 PWA</span><span>CSS3</span><span>Service Worker</span><span>WhatsApp API</span><span>Netlify</span>
+                </div>
+                <button class="inspect-trigger-btn" data-detail="ahumados">Inspeccionar Ficha &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOWROOM CARD 4: Actas con IA Whisper & Diarización -->
+          <div class="spatial-card" data-tilt>
+            <div class="card-ambient-glow"></div>
+            <div class="spatial-card-inner">
+              <div class="card-header-bar spatial-layer">
+                <span class="badge-internal-tool">● HERRAMIENTA INTERNA</span>
+                <span class="card-sys-id">AI-WHISPER-PY</span>
+              </div>
+
+              <div class="card-body-block spatial-layer">
+                <h3>Pipeline de Actas con Diarización &amp; IA</h3>
+                <p class="card-lead-desc">
+                  Sistema local automatizado que convierte grabaciones de comités técnicos de 2 a 3 horas en actas formales en Word: transcripción precisa en CPU con faster-whisper, diarización de interlocutores con pyannote.audio y síntesis con LLaMA 3.3 con $0 costo de API.
+                </p>
+              </div>
+
+              <!-- Interactive Floating Preview Layer -->
+              <div class="card-mockup-spatial spatial-layer">
+                <div class="mockup-header-mini">
+                  <div class="m-dots"><span></span><span></span><span></span></div>
+                  <span class="m-path">actas.internal/pipeline/sesion-104</span>
+                </div>
+                <div class="mockup-content-mini">
+                  <div class="m-stat-row">
+                    <div><span>Audio Procesado:</span> <strong>2h 14m (16kHz)</strong></div>
+                    <div><span>Hablantes Separados:</span> <strong>4 Funcionarios</strong></div>
+                    <div><span>Costo Recurrente:</span> <strong style="color:var(--neon-green)">$0 (Local CPU)</strong></div>
+                  </div>
+                  <div class="m-toast-mini">
+                    <span>📝 python-docx:</span> Acta institucional estructurada lista para firma en Word.
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-footer-meta spatial-layer">
+                <div class="tech-pills-row">
+                  <span>Python 3.11</span><span>faster-whisper</span><span>pyannote.audio</span><span>Groq LLaMA 3.3</span><span>docx</span>
+                </div>
+                <button class="inspect-trigger-btn" data-detail="actas">Inspeccionar Ficha &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         STAGE 3: SOLUCIONES COMERCIALES EN 3D (QUÉ RESUELVO PARA TI)
+         ======================================================================== -->
+    <section class="spatial-section" id="soluciones">
+      <div class="spatial-container">
+        
+        <div class="spatial-header-center">
+          <span class="spatial-tag">[ VALOR COMERCIAL &amp; SERVICIOS ]</span>
+          <h2 class="spatial-title">¿Cómo puedo <span class="spatial-gradient-text">acelerar y blindar tu operación?</span></h2>
+          <p class="spatial-subtitle">
+            Soluciones de ingeniería empaquetadas orientadas al retorno de inversión: desde la digitalización de inventarios que causan pérdidas hasta el aseguramiento perimetral de tu infraestructura.
+          </p>
+        </div>
+
+        <div class="solutions-slabs-grid">
+          
+          <!-- Slab 1: Software Empresarial -->
+          <div class="spatial-slab" data-tilt>
+            <div class="slab-3d-hologram">
+              <canvas class="slab-canvas-3d" id="canvas-slab-dev" width="140" height="140"></canvas>
+            </div>
+            <span class="slab-tag">DESARROLLO A MEDIDA</span>
+            <h3>Software Empresarial &amp; PWAs</h3>
+            <p>Elimina planillas manuales y registros desordenados con sistemas web y de escritorio que tu personal adoptará sin resistencia.</p>
+            <ul class="slab-features">
+              <li><span>✓</span> Inventarios con Kardex, carrito de salida y QR.</li>
+              <li><span>✓</span> E-commerce y cartas digitales con pedidos a WhatsApp (0% comisiones).</li>
+              <li><span>✓</span> Instaladores de escritorio (.exe) y PWAs instalables.</li>
+              <li><span>✓</span> Paneles en tiempo real y reportería oficial en PDF/Excel.</li>
+            </ul>
+            <a href="https://wa.me/573146384647?text=Hola%20Hamilton%2C%20quisiera%20cotizar%20un%20desarrollo%20de%20software%20empresarial" target="_blank" rel="noopener" class="slab-action-btn">
+              <span>Cotizar Software</span> &rarr;
+            </a>
+          </div>
+
+          <!-- Slab 2: Ciberseguridad -->
+          <div class="spatial-slab" data-tilt>
+            <div class="slab-3d-hologram">
+              <canvas class="slab-canvas-3d" id="canvas-slab-sec" width="140" height="140"></canvas>
+            </div>
+            <span class="slab-tag">SEGURIDAD DEFENSIVA</span>
+            <h3>Ciberseguridad &amp; Hardening</h3>
+            <p>Protege tu reputación institucional, previene la suplantación de identidad y asegura el cumplimiento regulatorio.</p>
+            <ul class="slab-features">
+              <li><span>✓</span> Blindaje DNS: DMARC (quarantine), SPF y registros DKIM.</li>
+              <li><span>✓</span> Cabeceras estrictas HSTS/CSP con Calificación Grado A.</li>
+              <li><span>✓</span> Auditorías de transparencia MinTIC (ITA) y accesibilidad WAVE.</li>
+              <li><span>✓</span> Simulacros de phishing ético con GoPhish en Kali Linux.</li>
+            </ul>
+            <a href="https://wa.me/573146384647?text=Hola%20Hamilton%2C%20necesito%20una%20auditor%C3%ADa%20de%20seguridad%20o%20hardening" target="_blank" rel="noopener" class="slab-action-btn">
+              <span>Solicitar Auditoría</span> &rarr;
+            </a>
+          </div>
+
+          <!-- Slab 3: Redes Cisco -->
+          <div class="spatial-slab" data-tilt>
+            <div class="slab-3d-hologram">
+              <canvas class="slab-canvas-3d" id="canvas-slab-net" width="140" height="140"></canvas>
+            </div>
+            <span class="slab-tag">INFRAESTRUCTURA &amp; CLOUD</span>
+            <h3>Redes Cisco &amp; Servidores</h3>
+            <p>Conectividad robusta para oficinas corporativas sin zonas muertas y migraciones de datos con cero pérdida.</p>
+            <ul class="slab-features">
+              <li><span>✓</span> Configuración de routers Cisco 2901, switches y APs TP-Link.</li>
+              <li><span>✓</span> Segmentación de cámaras IP y telefonía corporativa.</li>
+              <li><span>✓</span> Migración masiva de buzones (~19 GB) a cPanel sin caída.</li>
+              <li><span>✓</span> Hardening de servidores Linux, Apache, Nginx y MariaDB.</li>
+            </ul>
+            <a href="https://wa.me/573146384647?text=Hola%20Hamilton%2C%20quiero%20consultar%20sobre%20redes%20Cisco%20o%20servidores" target="_blank" rel="noopener" class="slab-action-btn">
+              <span>Consultar Redes</span> &rarr;
+            </a>
+          </div>
+
+          <!-- Slab 4: IA Aplicada -->
+          <div class="spatial-slab" data-tilt>
+            <div class="slab-3d-hologram">
+              <canvas class="slab-canvas-3d" id="canvas-slab-ai" width="140" height="140"></canvas>
+            </div>
+            <span class="slab-tag">AUTOMATIZACIÓN &amp; IA</span>
+            <h3>Inteligencia Artificial Aplicada</h3>
+            <p>Convierte tareas operativas repetitivas en flujos automatizados ultrarrápidos sin costos recurrentes innecesarios.</p>
+            <ul class="slab-features">
+              <li><span>✓</span> Transcripción local y actas en Word con Whisper y Groq.</li>
+              <li><span>✓</span> Análisis de telemetría vehicular GPS y detección de excesos.</li>
+              <li><span>✓</span> Generación programática de videos y carruseles con Python.</li>
+              <li><span>✓</span> Integración de LLMs (Gemini, Groq LLaMA) con guardrails.</li>
+            </ul>
+            <a href="https://wa.me/573146384647?text=Hola%20Hamilton%2C%20quiero%20automatizar%20un%20proceso%20con%20IA" target="_blank" rel="noopener" class="slab-action-btn">
+              <span>Automatizar con IA</span> &rarr;
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         STAGE 4: LAS 23 LEYES DE RENDIMIENTO (LOS 4 MONOLITOS ESPACIALES)
+         ======================================================================== -->
+    <section class="spatial-section" id="monolitos">
+      <div class="spatial-container">
+        
+        <div class="spatial-header-center">
+          <span class="spatial-tag">[ ARQUITECTURA DE ALTO RENDIMIENTO ]</span>
+          <h2 class="spatial-title">23 Leyes de <span class="spatial-gradient-text">escalabilidad y velocidad extrema</span></h2>
+          <p class="spatial-subtitle">
+            Cero código huérfano y cero saturación. Explora los 4 monolitos técnicos con los que diseño cada capa de software e infraestructura:
+          </p>
+        </div>
+
+        <!-- Monolith Selector Tabs -->
+        <div class="monolith-tabs-row" id="monolith-tabs">
+          <button class="monolith-tab-btn active" data-monolith="m-db">
+            <span class="m-tab-icon">🗄️</span>
+            <span>1. Base de Datos &amp; SQL (5)</span>
+          </button>
+          <button class="monolith-tab-btn" data-monolith="m-backend">
+            <span class="m-tab-icon">⚡</span>
+            <span>2. Backend &amp; Concurrencia (6)</span>
+          </button>
+          <button class="monolith-tab-btn" data-monolith="m-network">
+            <span class="m-tab-icon">🌐</span>
+            <span>3. Red &amp; Edge Caché (4)</span>
+          </button>
+          <button class="monolith-tab-btn" data-monolith="m-frontend">
+            <span class="m-tab-icon">🖥️</span>
+            <span>4. Frontend &amp; UI Reactiva (8)</span>
+          </button>
+        </div>
+
+        <!-- Monolith Panels Container -->
+        <div class="monolith-panels-viewport">
+          
+          <!-- MONOLITH PANEL 1: Base de Datos & SQL -->
+          <div class="monolith-panel active" id="m-db">
+            <div class="rules-spatial-grid">
+              <div class="rule-box">
+                <span class="rule-index">01</span>
+                <h4>Pide sólo las columnas que necesitas</h4>
+                <p>Erradicación total de <code>SELECT *</code>. Consultar únicamente las columnas requeridas mitiga el uso de RAM en el servidor, reduce el ancho de banda y evita scans innecesarios de disco.</p>
+                <code>SELECT id, codigo, stock FROM kardex</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">02</span>
+                <h4>Arregla las consultas en lote (Zero N+1)</h4>
+                <p>Eliminación del problema N+1 mediante <code>JOINs</code> explícitos, subconsultas indexadas y carga previa (*eager loading*) en bloque para no estrangular las conexiones.</p>
+                <code>JOIN items ON kardex.item_id = items.id</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">03</span>
+                <h4>Crea índices para las consultas más comunes</h4>
+                <p>Diseño y afinamiento de índices B-Tree y compuestos en columnas de filtrado (<code>WHERE</code>), ordenamiento (<code>ORDER BY</code>) y unión (<code>JOIN</code>) para respuestas en submilisegundos.</p>
+                <code>CREATE INDEX idx_kardex_ts ON kardex(ts, item_id)</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">04</span>
+                <h4>Pool de conexiones persistentes</h4>
+                <p>Reutilización continua de conexiones activas a MariaDB/MySQL/PostgreSQL. Elimina el costo del handshake TCP y la negociación de autenticación en cada petición.</p>
+                <code>Pool Size: 25-50 Keep-Alive Sockets</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">05</span>
+                <h4>Acerca el servidor a la base de datos</h4>
+                <p>Colocación del runtime de backend y la persistencia en la misma región cloud o red privada (VPC). Reducir la distancia física disminuye el RTT a menos de 1 milisegundo.</p>
+                <code>VPC Subnet Latency: &lt; 0.8ms</code>
+              </div>
+            </div>
+          </div>
+
+          <!-- MONOLITH PANEL 2: Backend & Concurrencia -->
+          <div class="monolith-panel" id="m-backend">
+            <div class="rules-spatial-grid">
+              <div class="rule-box">
+                <span class="rule-index">06</span>
+                <h4>Tareas lentas a una cola de trabajos</h4>
+                <p>Envío de correos, transcodificación de medios, procesamiento de reportes y sincronización GPS delegados a workers asíncronos en background (Redis/BullMQ) sin bloquear el hilo HTTP.</p>
+                <code>queue.add('generate-report', payload)</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">07</span>
+                <h4>Activa compresión Brotli &amp; Gzip</h4>
+                <p>Compresión agresiva de payloads JSON, HTML y CSS en servidor y perímetro. Reduce el tamaño de transferencia entre 60% y 82% mejorando drásticamente el TTI en redes móviles.</p>
+                <code>Content-Encoding: br (Level 6)</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">08</span>
+                <h4>Transmite las respuestas progresivamente</h4>
+                <p>Uso de HTTP Chunked Streaming, Server-Sent Events (SSE) y WebSockets para emitir datos tan pronto estén listos, sin retener la conexión esperando a que finalice todo el cálculo.</p>
+                <code>Transfer-Encoding: chunked / SSE</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">09</span>
+                <h4>Renderiza en el servidor o en el build</h4>
+                <p>Generación estática (SSG) para catálogos y contenido invariable, y renderizado del lado del servidor (SSR) para datos transaccionales, garantizando indexación SEO y primer byte casi instantáneo.</p>
+                <code>SSG Static / SSR Dynamic Hybrid</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">10</span>
+                <h4>Rastreo de peticiones con OpenTelemetry</h4>
+                <p>Instrumentación distribuida de trazas, métricas y spans (APM) para auditar cuellos de botella reales, percentiles P95/P99 y dependencias lentas con telemetría unificada.</p>
+                <code>OpenTelemetry APM &middot; P95/P99 Traces</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">11</span>
+                <h4>Reparte el tráfico entre varias instancias</h4>
+                <p>Balanceo de carga perimetral y horizontal entre réplicas de contenedores con health-checks constantes, garantizando resiliencia operativa y cero caídas de servicio por saturación.</p>
+                <code>Load Balancing &middot; Zero Single Point Failure</code>
+              </div>
+            </div>
+          </div>
+
+          <!-- MONOLITH PANEL 3: Red & Edge Caché -->
+          <div class="monolith-panel" id="m-network">
+            <div class="rules-spatial-grid">
+              <div class="rule-box">
+                <span class="rule-index">12</span>
+                <h4>Caché en memoria para datos más consultados</h4>
+                <p>Capa Redis o Memcached para consultas recurrentes, tablas maestras y sesiones. Reduce los hits a disco en la base de datos a cero y despacha datos en menos de 2 ms.</p>
+                <code>Redis In-Memory &middot; Sub-2ms Cache Hit</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">13</span>
+                <h4>Sirve archivos estáticos desde una CDN</h4>
+                <p>Distribución perimetral (Edge Caching) de imágenes, fuentes, CSS y JavaScript desde nodos cercanos al cliente para acelerar la entrega y descargar de tráfico al servidor central.</p>
+                <code>Cloudflare / Netlify Global Edge</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">14</span>
+                <h4>Caché inmutable en el navegador</h4>
+                <p>Directivas <code>Cache-Control: public, max-age=31536000, immutable</code> para recursos versionados por hash, y validación condicional <code>ETag</code> para respuestas dinámicas.</p>
+                <code>Cache-Control: immutable, max-age=1y</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">15</span>
+                <h4>Quita las dependencias sin usar (Zero Bloat)</h4>
+                <p>Auditoría radical de librerías externas y paquetes redundantes. Si una función se resuelve con 10 líneas de código nativo, no se importa un paquete de 2 megabytes.</p>
+                <code>Tree-Shaking &middot; Vanilla Native First</code>
+              </div>
+            </div>
+          </div>
+
+          <!-- MONOLITH PANEL 4: Frontend & UI Reactiva -->
+          <div class="monolith-panel" id="m-frontend">
+            <div class="rules-spatial-grid">
+              <div class="rule-box">
+                <span class="rule-index">16</span>
+                <h4>Pagina los resultados de la app</h4>
+                <p>Paginación server-side por cursor o keyset en catálogos, tablas y logs de auditoría. Traer bloques de 20 a 50 registros evita congelar el hilo de JavaScript en el cliente.</p>
+                <code>Cursor Pagination (limit: 50, cursor: id)</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">17</span>
+                <h4>Actualiza la interfaz sin esperar al servidor</h4>
+                <p>Mutaciones optimistas en la UI: el cambio visual ocurre de inmediato ante la acción del usuario y se concilia asíncronamente en backend, brindando sensación de respuesta instantánea.</p>
+                <code>Optimistic UI Mutation &middot; Zero Lag</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">18</span>
+                <h4>Lanza en paralelo peticiones independientes</h4>
+                <p>Agrupación de llamadas desacopladas con <code>Promise.all</code> o multiplexación HTTP/2. Evita cascadas secuenciales que bloquean el render de la página.</p>
+                <code>Promise.all([fetchItems(), fetchUser()])</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">19</span>
+                <h4>Lazy loading en imágenes fuera de pantalla</h4>
+                <p>Atributos nativos <code>loading="lazy"</code> y <code>decoding="async"</code> para medios ubicados bajo el pliegue inicial, ahorrando ancho de banda y priorizando el LCP.</p>
+                <code>&lt;img loading="lazy" decoding="async" /&gt;</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">20</span>
+                <h4>Virtualiza las vistas y tablas largas</h4>
+                <p>Reciclaje de nodos DOM mediante virtual scrolling (Windowing): renderizar exclusivamente las filas visibles en pantalla permite navegar 50.000 registros a 60 FPS estables.</p>
+                <code>Virtual Scrolling @ 60 FPS</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">21</span>
+                <h4>Evita re-renders innecesarios</h4>
+                <p>Componentes puros, memorización quirúrgica (<code>useMemo</code>, <code>useCallback</code>), suscripciones atómicas y segregación de estado para no recalcular el árbol de reconciliación.</p>
+                <code>Component Purity &middot; Atomic Selectors</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">22</span>
+                <h4>Divide el código por página y ruta</h4>
+                <p>Code splitting dinámico con <code>import()</code> bajo demanda. El navegador descarga exclusivamente el JavaScript correspondiente a la vista actual, reduciendo el bundle inicial.</p>
+                <code>const View = React.lazy(() =&gt; import('./View'))</code>
+              </div>
+
+              <div class="rule-box">
+                <span class="rule-index">23</span>
+                <h4>Carga scripts de terceros después de la página</h4>
+                <p>Atributos <code>defer</code> y <code>async</code> o aislamiento en Web Workers para scripts de analítica, píxeles y herramientas externas, blindando el hilo principal contra bloqueos.</p>
+                <code>&lt;script defer src="analytics.js"&gt;&lt;/script&gt;</code>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         STAGE 5: LA BÓVEDA (THE VAULT - 22 PROYECTOS INDEXADOS)
+         ======================================================================== -->
+    <section class="spatial-section" id="vault">
+      <div class="spatial-container">
+        
+        <div class="spatial-header-center">
+          <span class="spatial-tag">[ BÓVEDA DE SISTEMAS &amp; AUDITORÍAS ]</span>
+          <h2 class="spatial-title">Archivo completo de <span class="spatial-gradient-text">22 proyectos e implementaciones</span></h2>
+          <p class="spatial-subtitle">
+            Base de datos indexada con todos los desarrollos comerciales, herramientas institucionales y auditorías de seguridad ejecutadas. Filtra o busca por tecnología:
+          </p>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="vault-filter-bar">
+          <div class="vault-search-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="vault-search-input" placeholder="Buscar por stack, nombre o categoría (ej. React, Cisco, PHP, Python)..." />
+          </div>
+
+          <div class="vault-filter-pills" id="vault-pills">
+            <button class="v-pill active" data-vfilter="all">Todos (22)</button>
+            <button class="v-pill" data-vfilter="empresa">Empresariales</button>
+            <button class="v-pill" data-vfilter="comercial">Comerciales &amp; PWA</button>
+            <button class="v-pill" data-vfilter="seguridad">Seguridad &amp; Redes</button>
+            <button class="v-pill" data-vfilter="datos">Datos &amp; IA</button>
+          </div>
+        </div>
+
+        <!-- The Table -->
+        <div class="spatial-table-wrap">
+          <table class="spatial-table" id="vault-table">
+            <thead>
+              <tr>
+                <th>Código / Nombre</th>
+                <th>Área / Aplicación</th>
+                <th>Stack Tecnológico</th>
+                <th>Estado</th>
+                <th>Ficha Técnica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row 1 -->
+              <tr data-cat="empresa" data-name="InvenTrack v2.0 Setup Almacen Maquinaria Kardex Electron" data-tech="Node.js Express Socket.IO SQLite MySQL Electron">
+                <td><div class="t-name"><strong>InvenTrack v2.0</strong><span>Setup &middot; Desktop &amp; Web</span></div></td>
+                <td><span class="t-cat">Gestión de Inventario &amp; Flota</span></td>
+                <td><div class="t-chips"><span>Node.js</span><span>Socket.IO</span><span>SQLite/MySQL</span><span>Electron</span></div></td>
+                <td><span class="badge-live-prod">En Producción</span></td>
+                <td><button class="table-inspect-btn" data-detail="inventrack">Detalles</button></td>
+              </tr>
+
+              <!-- Row 2 -->
+              <tr data-cat="empresa comercial" data-name="Sistema E-14 Mesas en Vivo Mapa Electoral Alta Concurrencia" data-tech="Node.js Express Socket.IO Canvas PWA k6">
+                <td><div class="t-name"><strong>Sistema E-14: Mesas en Vivo</strong><span>Mapa Electoral &middot; Alta Concurrencia</span></div></td>
+                <td><span class="t-cat">PWA Offline-First</span></td>
+                <td><div class="t-chips"><span>Express 5</span><span>WebSockets</span><span>Canvas API</span><span>k6</span></div></td>
+                <td><span class="badge-pilot-tested">Piloto 34 Mesas</span></td>
+                <td><button class="table-inspect-btn" data-detail="e14">Detalles</button></td>
+              </tr>
+
+              <!-- Row 3 -->
+              <tr data-cat="empresa" data-name="Promueve+ Programa de Bienes Activos QR Patrimonio" data-tech="PHP MariaDB QR REST API cPanel">
+                <td><div class="t-name"><strong>Promueve+ Activos QR</strong><span>Programa de Bienes Institucionales</span></div></td>
+                <td><span class="t-cat">Control Patrimonial</span></td>
+                <td><div class="t-chips"><span>PHP 8.4</span><span>MariaDB</span><span>Códigos QR</span><span>REST API</span></div></td>
+                <td><span class="badge-live-prod">En Producción</span></td>
+                <td><button class="table-inspect-btn" data-detail="promueveplus">Detalles</button></td>
+              </tr>
+
+              <!-- Row 4 -->
+              <tr data-cat="empresa datos" data-name="VialTrack Telemetria GPS IA Groq PESV Velocidad" data-tech="Groq LLM Node.js R Excel">
+                <td><div class="t-name"><strong>VialTrack Telemetría</strong><span>Detección de Velocidad &amp; PESV</span></div></td>
+                <td><span class="t-cat">Automatización &amp; Telemetría</span></td>
+                <td><div class="t-chips"><span>Groq API</span><span>JavaScript</span><span>R Data</span><span>Excel</span></div></td>
+                <td><span class="badge-live-prod">En Producción</span></td>
+                <td><button class="table-inspect-btn" data-detail="vialtrack">Detalles</button></td>
+              </tr>
+
+              <!-- Row 5 -->
+              <tr data-cat="comercial" data-name="Ahumados Barbaros PWA Restaurante WhatsApp Domicilios Netlify" data-tech="HTML5 PWA CSS3 JavaScript ServiceWorker Netlify">
+                <td><div class="t-name"><strong>Ahumados Bárbaros PWA</strong><span>E-Commerce Gastronómico &middot; 2 Sedes</span></div></td>
+                <td><span class="t-cat">PWA &amp; Pedidos Directos</span></td>
+                <td><div class="t-chips"><span>PWA Offline</span><span>Service Worker</span><span>WhatsApp API</span><span>Netlify</span></div></td>
+                <td><span class="badge-live-prod">En Producción</span></td>
+                <td><button class="table-inspect-btn" data-detail="ahumados">Detalles</button></td>
+              </tr>
+
+              <!-- Row 6 -->
+              <tr data-cat="comercial datos" data-name="App Outfit Que me pongo manana Clima OpenWeather React" data-tech="React Vite Node.js Express SQLite OpenWeather JWT">
+                <td><div class="t-name"><strong>¿Qué me pongo mañana?</strong><span>Recomendador de Outfits por Clima</span></div></td>
+                <td><span class="t-cat">Full-Stack Web App</span></td>
+                <td><div class="t-chips"><span>React/Vite</span><span>Express</span><span>SQLite</span><span>OpenWeather</span></div></td>
+                <td><span class="badge-completed">Completado</span></td>
+                <td><button class="table-inspect-btn" data-detail="outfit">Detalles</button></td>
+              </tr>
+
+              <!-- Row 7 -->
+              <tr data-cat="comercial datos" data-name="Aguinaldo Navideno Amigo Secreto Desarreglo Backtracking Supabase" data-tech="React Vite Tailwind CSS Supabase WebAudio">
+                <td><div class="t-name"><strong>Aguinaldo Amigo Secreto</strong><span>Algoritmo de Desarreglos &middot; Cajas 3D</span></div></td>
+                <td><span class="t-cat">Plataforma Interactiva Festiva</span></td>
+                <td><div class="t-chips"><span>React</span><span>Tailwind</span><span>Supabase</span><span>Web Audio</span></div></td>
+                <td><span class="badge-completed">Completado</span></td>
+                <td><button class="table-inspect-btn" data-detail="aguinaldo">Detalles</button></td>
+              </tr>
+
+              <!-- Row 8 -->
+              <tr data-cat="datos" data-name="Simulador Bancario C# .NET Estructuras de Datos Cola Pila Lista" data-tech="C# .NET POO SOLID FIFO LIFO">
+                <td><div class="t-name"><strong>Simulador Bancario C#</strong><span>Estructuras de Datos Nativas (.NET 10)</span></div></td>
+                <td><span class="t-cat">Ciencia de la Computación</span></td>
+                <td><div class="t-chips"><span>C# .NET</span><span>Colas FIFO</span><span>Pilas LIFO</span><span>Listas Enlazadas</span></div></td>
+                <td><span class="badge-completed">Completado</span></td>
+                <td><button class="table-inspect-btn" data-detail="simuladorbanco">Detalles</button></td>
+              </tr>
+
+              <!-- Row 9 -->
+              <tr data-cat="empresa datos" data-name="Nexum Data Consulting Libreria LeoMas SQL Avanzado BI Python" data-tech="MySQL MariaDB SQL DER Python Matplotlib docx APA7">
+                <td><div class="t-name"><strong>Nexum BI: Librería LeoMás</strong><span>Auditoría SQL Avanzada &middot; Reporte APA</span></div></td>
+                <td><span class="t-cat">Business Intelligence &amp; Data</span></td>
+                <td><div class="t-chips"><span>SQL Avanzado</span><span>DER Model</span><span>Python docx</span><span>APA 7</span></div></td>
+                <td><span class="badge-consulting">Consultoría</span></td>
+                <td><button class="table-inspect-btn" data-detail="nexum">Detalles</button></td>
+              </tr>
+
+              <!-- Row 10 -->
+              <tr data-cat="empresa datos" data-name="Generador de Actas IA Whisper Pyannote Diarizacion Groq LLaMA Word" data-tech="Python faster-whisper pyannote Groq LLaMA python-docx">
+                <td><div class="t-name"><strong>Generador de Actas IA</strong><span>Whisper Local + Diarización pyannote</span></div></td>
+                <td><span class="t-cat">Pipeline de IA Local &amp; Audio</span></td>
+                <td><div class="t-chips"><span>faster-whisper</span><span>pyannote.audio</span><span>Groq LLaMA 3.3</span><span>docx</span></div></td>
+                <td><span class="badge-internal-tool">Herramienta</span></td>
+                <td><button class="table-inspect-btn" data-detail="actas">Detalles</button></td>
+              </tr>
+
+              <!-- Row 11 -->
+              <tr data-cat="comercial seguridad" data-name="Pipeline TikTok Ciberseguridad Video MoviePy FFmpeg Canva App" data-tech="Python MoviePy FFmpeg TTS Canva TypeScript">
+                <td><div class="t-name"><strong>TikTok Video Studio &amp; Canva</strong><span>Automatización Audiovisual Ciberseguridad</span></div></td>
+                <td><span class="t-cat">Generación Multimedia &amp; SDK</span></td>
+                <td><div class="t-chips"><span>Python MoviePy</span><span>FFmpeg</span><span>TTS Engine</span><span>Canva SDK</span></div></td>
+                <td><span class="badge-completed">Completado</span></td>
+                <td><button class="table-inspect-btn" data-detail="tiktok">Detalles</button></td>
+              </tr>
+
+              <!-- Row 12 -->
+              <tr data-cat="empresa datos" data-name="Mapa Maquinaria Tiempo Real Caldas Geolocalizacion" data-tech="PHP REST GPS Elementor Maps">
+                <td><div class="t-name"><strong>Mapa de Maquinaria en Caldas</strong><span>Geolocalización Satelital de Combos</span></div></td>
+                <td><span class="t-cat">Telemetría Geográfica</span></td>
+                <td><div class="t-chips"><span>PHP</span><span>GPS Satelital API</span><span>Leaflet</span></div></td>
+                <td><span class="badge-pilot-tested">Piloto</span></td>
+                <td><button class="table-inspect-btn" data-detail="mapa">Detalles</button></td>
+              </tr>
+
+              <!-- Row 13 -->
+              <tr data-cat="empresa" data-name="Mantenimientos Preventivos CheckList Taller Inspeccion" data-tech="PHP MySQL CheckList Mobile PDF">
+                <td><div class="t-name"><strong>Mantenimientos &amp; CheckList</strong><span>Inspección Técnica Pre-operacional</span></div></td>
+                <td><span class="t-cat">Operaciones &amp; Maquinaria</span></td>
+                <td><div class="t-chips"><span>PHP</span><span>MySQL</span><span>Checklist Móvil</span><span>PDF</span></div></td>
+                <td><span class="badge-live-prod">En Producción</span></td>
+                <td><button class="table-inspect-btn" data-detail="mantenimiento">Detalles</button></td>
+              </tr>
+
+              <!-- Row 14 -->
+              <tr data-cat="comercial" data-name="App Billar Torneos en Vivo Brackets Marcador" data-tech="React Vite TypeScript Node.js Prisma">
+                <td><div class="t-name"><strong>App Billar</strong><span>Gestión de Torneos en Tiempo Real</span></div></td>
+                <td><span class="t-cat">Plataforma Deportiva</span></td>
+                <td><div class="t-chips"><span>React/Vite</span><span>TypeScript</span><span>Prisma ORM</span></div></td>
+                <td><span class="badge-completed">Completado</span></td>
+                <td><button class="table-inspect-btn" data-detail="billar">Detalles</button></td>
+              </tr>
+
+              <!-- Row 15 -->
+              <tr data-cat="comercial" data-name="Proyecto Makia Barber Citas Turnos Agendamiento" data-tech="JavaScript HTML5 CSS3 WhatsApp UI">
+                <td><div class="t-name"><strong>Makia Barber</strong><span>Web &amp; Agendamiento de Turnos</span></div></td>
+                <td><span class="t-cat">Comercial &amp; Servicios</span></td>
+                <td><div class="t-chips"><span>JS ES6</span><span>CSS Moderno</span><span>WhatsApp API</span></div></td>
+                <td><span class="badge-completed">Completado</span></td>
+                <td><button class="table-inspect-btn" data-detail="makia">Detalles</button></td>
+              </tr>
+
+              <!-- Row 16 -->
+              <tr data-cat="comercial" data-name="Tienda Nando E-commerce Catalogo Carrito" data-tech="React JS State E-Commerce">
+                <td><div class="t-name"><strong>Tienda Nando</strong><span>E-commerce &amp; Carrito Dinámico</span></div></td>
+                <td><span class="t-cat">Comercio Digital</span></td>
+                <td><div class="t-chips"><span>React</span><span>Checkout Directo</span><span>CSS Grid</span></div></td>
+                <td><span class="badge-completed">Completado</span></td>
+                <td><button class="table-inspect-btn" data-detail="nando">Detalles</button></td>
+              </tr>
+
+              <!-- Row 17 -->
+              <tr data-cat="comercial empresa" data-name="UNI.VET.ZOO Clinica Veterinaria Historias Clinicas" data-tech="SQL Backend Logic CRUD PDF">
+                <td><div class="t-name"><strong>UNI.VET.ZOO</strong><span>Sistema de Gestión Clínica Veterinaria</span></div></td>
+                <td><span class="t-cat">Gestión Médica</span></td>
+                <td><div class="t-chips"><span>SQL Relacional</span><span>CRUD</span><span>Historias Clínicas</span></div></td>
+                <td><span class="badge-completed">Completado</span></td>
+                <td><button class="table-inspect-btn" data-detail="univet">Detalles</button></td>
+              </tr>
+
+              <!-- Row 18 -->
+              <tr data-cat="seguridad" data-name="Hardening Seguridad Headers MinTIC ColCERT Grado A DMARC" data-tech="SecurityHeaders DMARC cPanel WAF ISO27001">
+                <td><div class="t-name"><strong>Hardening Web &amp; Security Headers</strong><span>ColCERT &middot; Calificación Grado A</span></div></td>
+                <td><span class="t-cat">Ciberseguridad Institucional</span></td>
+                <td><div class="t-chips"><span>Security Headers</span><span>DMARC</span><span>2FA</span></div></td>
+                <td><span class="badge-live-prod">Grado A</span></td>
+                <td><button class="table-inspect-btn" data-detail="hardening">Detalles</button></td>
+              </tr>
+
+              <!-- Row 19 -->
+              <tr data-cat="seguridad" data-name="Laboratorio Phishing GoPhish Kali Linux Simulacion" data-tech="GoPhish Kali Linux SocialEngineering">
+                <td><div class="t-name"><strong>Laboratorio de Phishing Ético</strong><span>Simulación Controlada &amp; Sensibilización</span></div></td>
+                <td><span class="t-cat">Seguridad Ofensiva / Defensiva</span></td>
+                <td><div class="t-chips"><span>GoPhish</span><span>Kali Linux</span><span>Capacitación 25+ Pax</span></div></td>
+                <td><span class="badge-completed">Ejecutado</span></td>
+                <td><button class="table-inspect-btn" data-detail="phishing">Detalles</button></td>
+              </tr>
+
+              <!-- Row 20 -->
+              <tr data-cat="seguridad empresa" data-name="Infraestructura Cisco 2901 Fibra Optica Correo Migracion" data-tech="Cisco IOS Fibra TP-Link cPanel DNS">
+                <td><div class="t-name"><strong>Red Cisco 2901 &amp; Migración Cloud</strong><span>2 Pisos Fibra &middot; 19GB Correo</span></div></td>
+                <td><span class="t-cat">Infraestructura &amp; Redes</span></td>
+                <td><div class="t-chips"><span>Cisco 2901</span><span>ONT Bridge</span><span>19GB Migrados</span></div></td>
+                <td><span class="badge-live-prod">Operativo</span></td>
+                <td><button class="table-inspect-btn" data-detail="cisco">Detalles</button></td>
+              </tr>
+
+              <!-- Row 21 -->
+              <tr data-cat="datos" data-name="Econometria R TPM Inflacion Colombia Quarto Series Temporales" data-tech="R Quarto TimeSeries ADF NeweyWest">
+                <td><div class="t-name"><strong>Econometría: TPM vs Inflación</strong><span>Colombia 2019–2022 &middot; Reporte Quarto</span></div></td>
+                <td><span class="t-cat">Modelado Estadístico en R</span></td>
+                <td><div class="t-chips"><span>R Script</span><span>Quarto HTML</span><span>Prueba ADF</span></div></td>
+                <td><span class="badge-completed">Académico</span></td>
+                <td><button class="table-inspect-btn" data-detail="econometria">Detalles</button></td>
+              </tr>
+
+              <!-- Row 22 -->
+              <tr data-cat="seguridad datos" data-name="Auditoria Control Acceso NovaTech Matematicas Discretas RBAC" data-tech="Auditoria Matematicas Discretas UManizales RBAC">
+                <td><div class="t-name"><strong>Auditoría de Control de Acceso</strong><span>NovaTech Systems &middot; 7 Etapas</span></div></td>
+                <td><span class="t-cat">Seguridad de la Información</span></td>
+                <td><div class="t-chips"><span>RBAC Model</span><span>Matemáticas Discretas</span></div></td>
+                <td><span class="badge-completed">Académico</span></td>
+                <td><button class="table-inspect-btn" data-detail="novatech">Detalles</button></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         STAGE 6: COTIZADOR EXPRESS INTERACTIVO
+         ======================================================================== -->
+    <section class="spatial-section" id="cotizador">
+      <div class="spatial-container">
+        
+        <div class="spatial-header-center">
+          <span class="spatial-tag">[ ESTIMACIÓN INMEDIATA &middot; CERO COMPROMISO ]</span>
+          <h2 class="spatial-title">Configura y cotiza <span class="spatial-gradient-text">la solución para tu empresa</span></h2>
+          <p class="spatial-subtitle">
+            Selecciona tu necesidad y requerimientos. El sistema calculará la arquitectura óptima, tiempos estimados y generará una ficha estructurada lista para enviar por WhatsApp:
+          </p>
+        </div>
+
+        <div class="estimator-box" data-tilt>
+          <div class="card-ambient-glow"></div>
+
+          <div class="estimator-grid">
+            
+            <!-- Left: Options Selector -->
+            <div class="est-form-col">
+              
+              <div class="est-step-title">
+                <span>1</span> Tipo de Necesidad o Proyecto
+              </div>
+              <div class="est-pills-stack" id="est-types">
+                <label class="est-option-item active">
+                  <input type="radio" name="est_type" value="software" checked />
+                  <div class="opt-desc">
+                    <strong>Sistema de Software Empresarial / Inventario &amp; Kardex</strong>
+                    <small>Gestión de almacén, salidas con carrito, maquinaria y reportes ejecutivos.</small>
+                  </div>
+                </label>
+
+                <label class="est-option-item">
+                  <input type="radio" name="est_type" value="pwa" />
+                  <div class="opt-desc">
+                    <strong>PWA Comercial / E-Commerce con Pedidos WhatsApp</strong>
+                    <small>Carta digital o tienda offline-first, carga &lt;300ms y 0% comisiones a apps.</small>
+                  </div>
+                </label>
+
+                <label class="est-option-item">
+                  <input type="radio" name="est_type" value="security" />
+                  <div class="opt-desc">
+                    <strong>Auditoría de Ciberseguridad &amp; Hardening Institucional</strong>
+                    <small>Blindaje DNS (DMARC, SPF), SecurityHeaders Grado A, MinTIC ITA y phishing ético.</small>
+                  </div>
+                </label>
+
+                <label class="est-option-item">
+                  <input type="radio" name="est_type" value="infra" />
+                  <div class="opt-desc">
+                    <strong>Infraestructura Cisco, Redes &amp; Migración Cloud</strong>
+                    <small>Routers, switches, cámaras IP y migración de buzones a cPanel sin pérdidas.</small>
+                  </div>
+                </label>
+
+                <label class="est-option-item">
+                  <input type="radio" name="est_type" value="ai" />
+                  <div class="opt-desc">
+                    <strong>Automatización con IA Local (Whisper / Groq / Scripts)</strong>
+                    <small>Transcripción y actas automáticas en CPU, telemetría o bots sin costo de APIs.</small>
+                  </div>
+                </label>
+              </div>
+
+              <div class="est-step-title" style="margin-top:24px;">
+                <span>2</span> Módulos y Requerimientos Clave
+              </div>
+              <div class="est-pills-stack" id="est-features">
+                <label class="est-option-item">
+                  <input type="checkbox" name="est_feat" value="qr" checked />
+                  <div class="opt-desc">
+                    <strong>Placas &amp; Trazabilidad con Códigos QR Dinámicos</strong>
+                    <small>Verificación física y actas digitales al escanear bienes o máquinas.</small>
+                  </div>
+                </label>
+
+                <label class="est-option-item">
+                  <input type="checkbox" name="est_feat" value="telegram" checked />
+                  <div class="opt-desc">
+                    <strong>Alertas Automatizadas a Telegram / WhatsApp</strong>
+                    <small>Notificaciones inmediatas de stock mínimo, anomalías o pedidos entrantes.</small>
+                  </div>
+                </label>
+
+                <label class="est-option-item">
+                  <input type="checkbox" name="est_feat" value="desktop" />
+                  <div class="opt-desc">
+                    <strong>Instalador de Escritorio (.exe) con Electron</strong>
+                    <small>App para operadores en Windows sin requerir navegador abierto.</small>
+                  </div>
+                </label>
+
+                <label class="est-option-item">
+                  <input type="checkbox" name="est_feat" value="auth" checked />
+                  <div class="opt-desc">
+                    <strong>Autenticación con Roles (RBAC) &amp; Auditoría</strong>
+                    <small>Control de acceso estricto, hash seguro y registro inmutable de acciones.</small>
+                  </div>
+                </label>
+
+                <label class="est-option-item">
+                  <input type="checkbox" name="est_feat" value="reports" checked />
+                  <div class="opt-desc">
+                    <strong>Generación Automática de Reportes en PDF / Word / Excel</strong>
+                    <small>Actas de entrega, kardex, fichas técnicas o informes oficiales listos para firma.</small>
+                  </div>
+                </label>
+              </div>
+
+              <div class="est-step-title" style="margin-top:24px;">
+                <span>3</span> Nivel de Alcance &amp; Tiempo de Entrega
+              </div>
+              <div class="est-pills-stack" id="est-scope">
+                <label class="est-option-item active">
+                  <input type="radio" name="est_scope" value="standard" checked />
+                  <div class="opt-desc">
+                    <strong>Sistema Completo en Producción (3 a 5 Semanas)</strong>
+                    <small>Arquitectura terminada, base de datos relacional, manuales y dossier técnico.</small>
+                  </div>
+                </label>
+
+                <label class="est-option-item">
+                  <input type="radio" name="est_scope" value="mvp" />
+                  <div class="opt-desc">
+                    <strong>Prototipo Rápido / MVP Funcional (1 a 2 Semanas)</strong>
+                    <small>Versión funcional prioritaria para validar el flujo operativo de inmediato.</small>
+                  </div>
+                </label>
+
+                <label class="est-option-item">
+                  <input type="radio" name="est_scope" value="urgent" />
+                  <div class="opt-desc">
+                    <strong>Intervención Urgente / Auditoría de Choque (&lt; 1 Semana)</strong>
+                    <small>Remediación inmediata de fallas críticas, lentitud o migración de servidores.</small>
+                  </div>
+                </label>
+              </div>
+
+            </div>
+
+            <!-- Right: Live Estimation Summary -->
+            <div class="est-summary-col">
+              <div class="summary-card-spatial">
+                <div class="sc-head">
+                  <h4>Ficha Técnica Estimada</h4>
+                  <span class="sc-live-badge">CALCULO EN VIVO</span>
+                </div>
+
+                <div class="sc-block">
+                  <span class="sc-label">Arquitectura Sugerida:</span>
+                  <div class="sc-val" id="esc-arch">PWA Offline + Node.js / Express + SQLite / MySQL</div>
+                </div>
+
+                <div class="sc-block">
+                  <span class="sc-label">Tiempo Estimado de Entrega:</span>
+                  <div class="sc-val highlight" id="esc-time">3 a 5 semanas hábiles</div>
+                </div>
+
+                <div class="sc-block">
+                  <span class="sc-label">Entregables Formales Incluidos:</span>
+                  <ul class="sc-list" id="esc-deliverables">
+                    <li>Código fuente 100% propiedad de tu organización (cero ataduras).</li>
+                    <li>Base de datos normalizada con índices y migraciones.</li>
+                    <li>Manual de usuario para operadores y personal de almacén/taller.</li>
+                    <li>Dossier técnico formal de arquitectura de componentes.</li>
+                    <li>Puesta en marcha asistida en tu servidor o red local.</li>
+                  </ul>
+                </div>
+
+                <div class="sc-guarantee">
+                  <strong>Garantía de Cero Código Huérfano:</strong>
+                  Soberanía tecnológica total: tu organización recibe la solución documentada, respaldada y lista para operar de forma autónoma.
+                </div>
+
+                <a href="#" id="esc-whatsapp-btn" target="_blank" rel="noopener" class="spatial-btn primary full-w">
+                  <span>Cotizar por WhatsApp con esta Ficha &rarr;</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         STAGE 7: CONTACT GATEWAY
+         ======================================================================== -->
+    <section class="spatial-section" id="contacto">
+      <div class="spatial-container">
+        
+        <div class="contact-spatial-box" data-tilt>
+          <div class="card-ambient-glow"></div>
+
+          <div class="csb-grid">
+            <div class="csb-left">
+              <span class="spatial-tag">[ CONVERSEMOS ]</span>
+              <h2 class="csb-title">¿Tienes un proceso crítico que necesita una solución real?</h2>
+              <p class="csb-desc">
+                Ya sea un sistema de gestión a medida, digitalización de activos con QR, blindaje de servidores o consultoría en redes. Respondo con propuesta técnica y tiempos claros.
+              </p>
+
+              <div class="csb-channels">
+                <a href="https://wa.me/573146384647?text=Hola%20Hamilton%2C%20quisiera%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener" class="channel-pill wa">
+                  <div class="ch-icon">💬</div>
+                  <div>
+                    <strong>WhatsApp Directo</strong>
+                    <span>+57 314 638 4647 (Canal preferente)</span>
+                  </div>
+                </a>
+
+                <a href="mailto:hamiltonquintero462@gmail.com?subject=Propuesta%20de%20Desarrollo%20o%20Infraestructura" class="channel-pill mail">
+                  <div class="ch-icon">✉️</div>
+                  <div>
+                    <strong>Correo Profesional</strong>
+                    <span>hamiltonquintero462@gmail.com</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Fast Structured Form -->
+            <form class="csb-form" id="contact-form">
+              <div class="f-group">
+                <label for="c-name">Tu Nombre o Empresa</label>
+                <input type="text" id="c-name" placeholder="Ej. Carlos Restrepo (Logística &amp; Almacén)" required />
+              </div>
+
+              <div class="f-row">
+                <div class="f-group">
+                  <label for="c-contact">Email o Celular</label>
+                  <input type="text" id="c-contact" placeholder="+57 310 ... o correo" required />
+                </div>
+                <div class="f-group">
+                  <label for="c-type">Tipo de Proyecto</label>
+                  <select id="c-type">
+                    <option value="Desarrollo de Software">Desarrollo de Software a Medida</option>
+                    <option value="Inventarios y Activos QR">Sistema de Inventario / Activos QR</option>
+                    <option value="Ciberseguridad y Hardening">Ciberseguridad &amp; Hardening</option>
+                    <option value="Infraestructura Cisco y Redes">Redes Cisco &amp; Conectividad</option>
+                    <option value="Automatización e IA">Automatización con IA Local</option>
+                    <option value="Web App Comercial">Plataforma Web o E-commerce</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="f-group">
+                <label for="c-msg">Detalles de la Operación / Problema a Resolver</label>
+                <textarea id="c-msg" rows="3" placeholder="Describe brevemente qué proceso deseas digitalizar o qué falla deseas solucionar..." required></textarea>
+              </div>
+
+              <button type="submit" class="spatial-btn primary full-w">
+                <span>Enviar Consulta por WhatsApp &rarr;</span>
+              </button>
+            </form>
+          </div>
+
+          <div class="csb-footer-meta">
+            <span>Ubicación: Manizales, Caldas, Colombia &middot; UTC-5</span>
+            <span>Tratamiento de datos personales amparado por Ley 1581 de 2012</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="spatial-footer">
+    <div class="spatial-container footer-row">
+      <div class="footer-brand">
+        <strong>&lt;Hamilton Quintero García /&gt;</strong>
+        <span>Ingeniería de Software &middot; Ciberseguridad &middot; Infraestructura</span>
+      </div>
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#showroom">Showroom 3D</a>
+        <a href="#soluciones">Soluciones</a>
+        <a href="#monolitos">23 Leyes</a>
+        <a href="#vault">Bóveda</a>
+        <a href="#cotizador">Cotizador</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       RAYCAST / COMMAND PALETTE (CMD+K / CTRL+K)
+       ======================================================================== -->
+  <div class="cmdk-backdrop" id="cmdk-modal">
+    <div class="cmdk-dialog">
+      <div class="cmdk-search-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="cmdk-input" placeholder="Escribe un comando o busca un proyecto..." autocomplete="off" spellcheck="false" />
+        <kbd class="cmdk-esc-key" id="cmdk-esc-btn">ESC</kbd>
+      </div>
+      <div class="cmdk-results" id="cmdk-results"></div>
+      <div class="cmdk-footer">
+        <div class="cmdk-tips">
+          <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> Navegar</span>
+          <span><kbd>&crarr;</kbd> Seleccionar</span>
+          <span><kbd>ESC</kbd> Cerrar</span>
+        </div>
+        <span class="cmdk-status-tag">HQ-SYSTEMS SPATIAL</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL: CV DOWNLOAD SELECTOR
+       ======================================================================== -->
+  <div class="cv-modal-backdrop" id="cv-modal">
+    <div class="cv-modal-card">
+      <div class="modal-top">
+        <span class="modal-code">DOCUMENTACIÓN CERTIFICADA &middot; TALENTO TI</span>
+        <button class="modal-close-btn" id="cv-modal-close">&times;</button>
+      </div>
+      <div class="cv-modal-body">
+        <h3>Descargar Hoja de Vida &middot; Dossiers</h3>
+        <p class="cv-modal-intro">
+          Selecciona el formato correspondiente según el perfil o requerimiento técnico que deseas evaluar:
+        </p>
+        <div class="cv-download-list">
+          <a href="cv-hamilton-fullstack.pdf" download class="cv-download-item">
+            <div class="cv-item-icon">💻</div>
+            <div class="cv-item-text">
+              <strong>Desarrollador Full-Stack (PDF)</strong>
+              <span>PHP 8.4, Node.js, React, APIs REST, MySQL, SQLite y control de acceso</span>
+            </div>
+            <span class="cv-dl-btn">Descargar &darr;</span>
+          </a>
+
+          <a href="cv-hamilton-automatizacion.pdf" download class="cv-download-item">
+            <div class="cv-item-icon">⚡</div>
+            <div class="cv-item-text">
+              <strong>Analista de Automatización &amp; Procesos (PDF)</strong>
+              <span>Digitalización de inventarios, scripts, reportes de flota y compliance PESV</span>
+            </div>
+            <span class="cv-dl-btn">Descargar &darr;</span>
+          </a>
+
+          <a href="cv-hamilton-sistemas-ti.pdf" download class="cv-download-item">
+            <div class="cv-item-icon">🖧</div>
+            <div class="cv-item-text">
+              <strong>Técnico en Redes &amp; Soporte TI (PDF)</strong>
+              <span>Cisco 2901, fibra óptica, videovigilancia IP, cPanel y mesa de ayuda</span>
+            </div>
+            <span class="cv-dl-btn">Descargar &darr;</span>
+          </a>
+
+          <a href="cv-hamilton-ats.pdf" download class="cv-download-item">
+            <div class="cv-item-icon">📄</div>
+            <div class="cv-item-text">
+              <strong>Formato ATS Estándar (PDF)</strong>
+              <span>Optimizado para filtros automáticos de selección y reclutamiento corporativo</span>
+            </div>
+            <span class="cv-dl-btn">Descargar &darr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL: INSPECCIÓN DETALLADA DE PROYECTO
+       ======================================================================== -->
+  <div class="inspect-modal-backdrop" id="inspect-modal">
+    <div class="inspect-modal-card">
+      <div class="modal-top">
+        <span class="modal-code" id="modal-code">SYS-DETAIL</span>
+        <button class="modal-close-btn" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-content">
+        <!-- Inyectado dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-notification" id="toast">Copiado al portapapeles</div>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>
