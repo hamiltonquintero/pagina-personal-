@@ -2307,8 +2307,10 @@ main {
 }
 
 /* --------------------------------------------------------------------------
-   16. RESPONSIVE BREAKPOINTS
+   16. RESPONSIVE BREAKPOINTS & MOBILE OPTIMIZATIONS
    -------------------------------------------------------------------------- */
+
+/* Tablet & Medium Screens */
 @media (max-width: 1100px) {
   .hero-kpi-deck {
     grid-template-columns: repeat(2, 1fr);
@@ -2316,46 +2318,603 @@ main {
   .solutions-slabs-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .holo-tabs {
+    gap: 4px;
+  }
+  
+  .holo-tab {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .holo-tab .h-icon {
+    font-size: 0.9rem;
+  }
 }
 
+/* Tablet Portrait & Small Laptops */
 @media (max-width: 900px) {
+  /* Sections spacing */
+  .spatial-section {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  
+  /* Container padding */
+  .spatial-container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  
+  /* Projects grid */
   .showroom-deck-grid {
     grid-template-columns: 1fr;
   }
+  
+  /* Forms and estimator */
   .estimator-grid {
     grid-template-columns: 1fr;
   }
   .csb-grid {
     grid-template-columns: 1fr;
   }
+  
+  /* Navigation - Mobile Menu */
   .hud-nav {
     display: none;
   }
   .hud-burger {
     display: flex;
   }
+  
+  .hud-actions {
+    gap: 8px;
+  }
+  
+  .hud-contact-btn span {
+    display: none;
+  }
+  
+  .hud-contact-btn {
+    padding: 7px 12px;
+  }
+  
+  /* Hero adjustments */
+  .spatial-hero {
+    padding-top: calc(var(--header-height) + 40px);
+    padding-bottom: 60px;
+    min-height: auto;
+  }
+  
+  .hero-actions-row {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .spatial-btn {
+    width: 100%;
+  }
+  
+  /* Hologram viewer */
+  .hero-holo-viewer {
+    max-width: 100%;
+  }
+  
+  .holo-viewport-wrap {
+    height: 280px;
+  }
+  
+  /* Monolith tabs */
+  .monolith-tabs-row {
+    gap: 8px;
+  }
+  
+  .monolith-tab-btn {
+    padding: 10px 16px;
+    font-size: 0.84rem;
+  }
+  
+  .m-tab-icon {
+    font-size: 1rem;
+  }
+  
+  /* Footer */
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
+/* Mobile Phones */
 @media (max-width: 640px) {
+  /* Root adjustments */
+  :root {
+    --header-height: 64px;
+  }
+  
+  /* Typography scaling */
+  html {
+    font-size: 15px;
+  }
+  
+  /* Container */
+  .spatial-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  /* Sections */
+  .spatial-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  /* HUD Navigation */
+  .spatial-hud {
+    top: 8px;
+    padding: 0 12px;
+  }
+  
+  .hud-inner {
+    height: 52px;
+    padding: 0 14px;
+  }
+  
+  .hud-brand {
+    font-size: 0.8rem;
+  }
+  
+  .hud-telemetry {
+    display: none;
+  }
+  
+  .theme-btn {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .hud-actions {
+    gap: 6px;
+  }
+  
+  /* Hero section */
+  .spatial-hero {
+    padding-top: calc(var(--header-height) + 30px);
+    padding-bottom: 40px;
+  }
+  
+  .spatial-status-badge {
+    font-size: 0.7rem;
+    padding: 5px 14px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .spatial-hero-title {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+    margin-bottom: 18px;
+  }
+  
+  .spatial-hero-lead {
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+  }
+  
+  .hero-actions-row {
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  
+  /* KPI Deck */
   .hero-kpi-deck {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
+  
+  .kpi-slab {
+    padding: 20px 16px;
+  }
+  
+  .kpi-number {
+    font-size: clamp(1.6rem, 5vw, 2rem);
+  }
+  
+  /* Hologram Viewer */
+  .hero-holo-viewer {
+    border-radius: var(--radius-lg);
+    margin-bottom: 40px;
+  }
+  
+  .holo-header-bar {
+    padding: 10px 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .holo-tag-live {
+    font-size: 0.65rem;
+  }
+  
+  .holo-tabs {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 6px;
+    padding-bottom: 4px;
+  }
+  
+  .holo-tab {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+  
+  .holo-tab span:last-child {
+    display: none;
+  }
+  
+  .holo-tab .h-icon {
+    font-size: 1.1rem;
+  }
+  
+  .holo-viewport-wrap {
+    height: 240px;
+  }
+  
+  .holo-telemetry-overlay {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    bottom: 10px;
+    left: 14px;
+    right: 14px;
+  }
+  
+  .holo-badge-hud {
+    font-size: 0.65rem;
+    padding: 4px 10px;
+  }
+  
+  .holo-stats-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 0.65rem;
+  }
+  
+  .holo-interact-tip {
+    font-size: 0.65rem;
+  }
+  
+  /* Section Headers */
+  .spatial-header-center {
+    margin-bottom: 40px;
+  }
+  
+  .spatial-tag {
+    font-size: 0.68rem;
+    padding: 3px 12px;
+  }
+  
+  .spatial-title {
+    font-size: clamp(1.6rem, 6vw, 2rem);
+  }
+  
+  .spatial-subtitle {
+    font-size: 0.92rem;
+  }
+  
+  /* Cards */
+  .spatial-card {
+    padding: 20px;
+    border-radius: var(--radius-lg);
+  }
+  
+  .card-header-bar {
+    flex-wrap: wrap;
+  }
+  
+  .card-body-block h3 {
+    font-size: 1.2rem;
+  }
+  
+  .card-lead-desc {
+    font-size: 0.88rem;
+  }
+  
+  .card-mockup-spatial {
+    border-radius: var(--radius-sm);
+  }
+  
+  .mockup-content-mini {
+    padding: 12px;
+  }
+  
+  .m-stat-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    font-size: 0.75rem;
+  }
+  
+  .card-footer-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .inspect-trigger-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Solutions Grid */
   .solutions-slabs-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
+  
+  .spatial-slab {
+    padding: 24px 20px;
+  }
+  
+  .slab-3d-hologram {
+    height: 100px;
+  }
+  
+  .slab-action-btn {
+    width: 100%;
+  }
+  
+  /* Monolith Section */
+  .monolith-tabs-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .monolith-tab-btn {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
   .rules-spatial-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
+  
+  .rule-box {
+    padding: 20px;
+  }
+  
+  /* Vault Table */
+  .vault-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .vault-search-box {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .vault-filter-pills {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  
+  .spatial-table-wrap {
+    border-radius: var(--radius-md);
+  }
+  
+  .spatial-table {
+    font-size: 0.82rem;
+  }
+  
+  .spatial-table th,
+  .spatial-table td {
+    padding: 12px 14px;
+  }
+  
+  .t-chips {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  /* Estimator */
+  .estimator-box {
+    padding: 20px;
+    border-radius: var(--radius-lg);
+  }
+  
+  .est-step-title {
+    font-size: 0.95rem;
+  }
+  
+  .est-option-item {
+    padding: 12px 14px;
+  }
+  
+  .summary-card-spatial {
+    padding: 20px;
+  }
+  
+  /* Contact Section */
+  .contact-spatial-box {
+    padding: 20px;
+  }
+  
+  .csb-title {
+    font-size: clamp(1.5rem, 5vw, 1.8rem);
+  }
+  
   .f-row {
     grid-template-columns: 1fr;
   }
+  
+  .csb-footer-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  /* Command Palette */
+  .cmdk-backdrop {
+    padding-top: 80px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  
+  .cmdk-dialog {
+    max-width: 100%;
+  }
+  
+  .cmdk-search-header {
+    padding: 12px 16px;
+  }
+  
+  .cmdk-results {
+    max-height: 320px;
+  }
+  
+  /* Modals */
+  .cv-modal-backdrop,
+  .inspect-modal-backdrop {
+    padding: 12px;
+    align-items: flex-start;
+  }
+  
+  .cv-modal-card,
+  .inspect-modal-card {
+    max-width: 100%;
+    border-radius: var(--radius-lg);
+    margin-top: 60px;
+  }
+  
+  .modal-top {
+    padding: 14px 18px;
+  }
+  
+  .cv-modal-body,
+  .inspect-modal-card .modal-body {
+    padding: 20px;
+  }
+  
+  .cv-download-item {
+    padding: 14px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .cv-dl-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Toast */
+  .toast-notification {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    font-size: 0.75rem;
+    padding: 10px 16px;
+  }
+  
+  /* Footer */
+  .spatial-footer {
+    padding: 30px 0;
+  }
+  
+  .footer-links {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 380px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .spatial-hero-title {
+    font-size: 1.6rem;
+  }
+  
+  .holo-viewport-wrap {
+    height: 200px;
+  }
+  
+  .spatial-btn {
+    padding: 11px 20px;
+    font-size: 0.88rem;
+  }
+  
+  .kpi-number {
+    font-size: 1.5rem;
+  }
+  
   .spatial-card {
-    padding: 24px;
+    padding: 16px;
   }
-  .estimator-box, .contact-spatial-box {
-    padding: 24px;
+}
+
+/* Landscape Mobile Phones */
+@media (max-width: 900px) and (orientation: landscape) {
+  .spatial-hero {
+    min-height: auto;
+    padding-top: 80px;
+    padding-bottom: 50px;
   }
-  .hud-telemetry {
-    display: none;
+  
+  .holo-viewport-wrap {
+    height: 220px;
+  }
+  
+  .spatial-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase tap targets for touch */
+  .spatial-btn {
+    min-height: 44px;
+  }
+  
+  .holo-tab {
+    min-height: 40px;
+  }
+  
+  .nav-link {
+    padding: 10px 16px;
+  }
+  
+  .theme-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  /* Disable hover effects on touch devices */
+  .spatial-card:hover {
+    transform: none;
+  }
+  
+  .spatial-slab:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Make scrollable areas more obvious */
+  .holo-tabs {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .vault-filter-pills {
+    -webkit-overflow-scrolling: touch;
   }
 }
